@@ -1,51 +1,143 @@
+/* ---------------- GLOBAL RESET ---------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+/* ---------------- BODY BACKGROUND ---------------- */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f4f8;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+
+  /* Gradient background for glass effect */
+  background: linear-gradient(
+    135deg,
+    #667eea,
+    #764ba2,
+    #89f7fe
+  );
+  background-size: 300% 300%;
+  animation: gradientMove 10s ease infinite;
 }
 
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ---------------- GLASS CONTAINER ---------------- */
 .container {
-  background: #fff;
-  padding: 30px;
-  border-radius: 10px;
-  width: 300px;
+  width: 320px;
+  padding: 30px 25px;
   text-align: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+
+  color: #fff;
+  animation: fadeIn 0.8s ease;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------------- HEADINGS ---------------- */
+.container h1 {
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  letter-spacing: 1px;
+}
+
+/* ---------------- INPUTS ---------------- */
 input {
-  padding: 10px;
+  width: 100%;
+  padding: 12px;
   margin: 10px 0;
-  width: 90%;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  outline: none;
 }
 
+input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+input:focus {
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ---------------- BUTTONS ---------------- */
 button {
-  padding: 10px 20px;
-  margin: 5px;
-  background-color: #0077cc;
-  color: white;
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: #fff;
+
   border: none;
-  border-radius: 5px;
+  border-radius: 12px;
   cursor: pointer;
+  font-size: 1rem;
+
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 button:hover {
-  background-color: #005fa3;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
 }
 
+/* ---------------- LOGOUT BUTTON ---------------- */
 .logout-btn {
-  background-color: #cc0000;
+  background: linear-gradient(135deg, #ff4e50, #f44336);
+  margin-top: 15px;
 }
 
 .logout-btn:hover {
-  background-color: #990000;
+  box-shadow: 0 10px 20px rgba(255, 0, 0, 0.4);
+}
+
+/* ---------------- TEXT & MESSAGES ---------------- */
+p {
+  margin-top: 10px;
+}
+
+#transaction-message {
+  margin-top: 10px;
+  font-weight: 500;
 }
 
 .error {
-  color: red;
+  color: #ffb3b3;
+  margin-top: 8px;
 }
